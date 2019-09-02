@@ -33,7 +33,7 @@ public class A1Novice {
 		double priceSingle = scan.nextDouble();
 		// All items' quantity, name and their price
 		
-		priceTotal = priceSingle * quantity;
+		priceTotal = priceTotal + priceSingle * quantity;
 		priceAtEnd = String.format("%.2f", priceTotal);
 		}
 		// Total price for each customer
