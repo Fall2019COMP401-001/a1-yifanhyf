@@ -1,99 +1,99 @@
 package a1;
 
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class A1Adept {
 
 	public static void main(String[] args) {
-		
-		Scanner scan = new Scanner(System.in);
 
-		int countIndex = scan.nextInt();
-		
-		String[] itemArray = new String[countIndex];
-		double[] priceArray = new double[countIndex];
-		
-		for (int i=0; i < countIndex; i++) {
-			itemArray[i] = scan.next();
-			priceArray[i] = scan.nextDouble();
-			
-		}
-		
-		int countCustomer = scan.nextInt();
-		
-		String[] first = new String[countCustomer];
-		
-		String[] last = new String[countCustomer];
-		
-		double[] priceTotal = new double [countCustomer];
-		
-		for (int i=0; i< countCustomer; i++) {
-			first[i] = scan.next();
-			last[i] = scan.next();
-			
-			int countProduct = scan.nextInt();
-			double priceTotalNum = 0;
-		
-		
-		for(int j=0; j< countProduct; j++) {
-			int countUnit = scan.nextInt();
-		
-			String name = scan.next();
-			double price = 0;
-			
-		for (int n=0; n< countIndex; n++ ) {
-			if (name.equals(itemArray[n])) {
-				price = priceArray[n];
-			}
-		}
-		
-		priceTotalNum += price * countUnit;
-		
-	}
-	
-	
-		priceTotal[i] = priceTotalNum;
-  }
-		double max = 0;
-		String maxFirst = "";
-		String maxLast = "";
-		
-		for (int i=0; 1< countCustomer; i++) {
-			if (priceTotal[i] > max) {
-				max = priceTotal[i];
-				maxFirst = first[i];
-				maxLast = last[i];
-				
-			}
-		}
-		
-		String maxString = String.format("%.2f", max);
-		System.out.println("Biggest: " + maxFirst + " " + maxLast + "(" + maxString + ")");
-		
-		double min = priceTotal[0];
-		String minFirst = first[0];
-		String minLast = last[0];
-		for (int i=0; i<countCustomer; i++) {
-			if (priceTotal[i] < min) {
-				min = priceTotal[i];
-				minFirst = first[i];
-				minLast = last[i];
-				
-			}
-		}
-		String minString = String.format("%.2f", min);
-		System.out.println("Smallest: " + minFirst + " (" + minString + ")");
-		
-		double totalPrice = 0; 
-		for (int i=0; i< countCustomer; i++) {
-			totalPrice += priceTotal[i];
-			
-		}
-		double average = totalPrice / countCustomer;
-		String averageString = String.format("%.2f", average);
-		System.out.println("Average: " + averageString);
-	
-	
-	
-	}
+        Scanner scanner = new Scanner(System.in);
+
+        // The number of fruits in the store
+        int numberOfItem = scanner.nextInt();
+
+        // The name of each fruits
+        List fruitList = new ArrayList<String>();
+        // The price of each fruits
+        List<Double> fruitPrice = new ArrayList<Double>();
+
+        // get items from scanner
+        for (int i=0; i < numberOfItem; i++) {
+            fruitList.add(scanner.next());
+            fruitPrice.add(scanner.nextDouble());
+        }
+
+        // Total number of customers in the store
+        int numberOfCustomer = scanner.nextInt();
+
+        List<String> firstName = new ArrayList<String>();
+        List<String> lastName = new ArrayList<String>();
+
+        // First and last name of each customer
+        List<Double> priceTotal = new ArrayList<Double>();
+
+        for (int i=0; i< numberOfCustomer; i++) {
+            firstName.add(scanner.next());
+            lastName.add(scanner.next());
+
+            int countProduct = scanner.nextInt();
+            double priceTotalNum = 0;
+
+            for(int j=0; j< countProduct; j++) {
+                int countUnit = scanner.nextInt();
+
+                String name = scanner.next();
+                double price = 0;
+
+                for (int n=0; n< numberOfItem; n++ ) {
+                    if (name.equals(fruitList.get(n))) {
+                        price = fruitPrice.get(n);
+                    }
+                }
+
+                priceTotalNum += price * countUnit;
+
+            }
+
+
+            priceTotal.add(priceTotalNum);
+        }
+        double max = 0;
+        String maxFirstName = "";
+        String maxLastName = "";
+
+        for (int i=0; i< numberOfCustomer; i++) {
+            if (priceTotal.get(i) > max) {
+                max = priceTotal.get(i);
+                maxFirstName = firstName.get(i);
+                maxLastName = lastName.get(i);
+
+            }
+        }
+
+        System.out.println(String.format("Biggest: %s %s (%.2f)",maxFirstName,  maxLastName, max));
+
+        double min = priceTotal.get(0);
+        String minFirstName = firstName.get(0);
+        String minLastName = lastName.get(0);
+        for (int i=0; i<numberOfCustomer; i++) {
+            if (priceTotal.get(i) < min) {
+                min = priceTotal.get(i);
+                minFirstName = firstName.get(i);
+                minLastName = lastName.get(i);
+            }
+        }
+        System.out.println(String.format("Smallest: %s %s (%.2f)",minFirstName,  minLastName, min));
+        double totalPrice = 0;
+        for (int i=0; i< numberOfCustomer; i++) {
+            totalPrice += priceTotal.get(i);
+
+        }
+        double average = totalPrice / numberOfCustomer;
+        System.out.println(String.format("Average: %.2f", average));
+
+
+
+    }
 }
