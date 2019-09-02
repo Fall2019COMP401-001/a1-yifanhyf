@@ -39,6 +39,7 @@ public class A1Novice {
 		// Total price for each customer
 		
 		char firstInitial = firstName.charAt(0);
+		// Take the intial of the first name
 		
 		System.out.println(firstInitial + ". " + lastName + ": " + priceAtEnd);
 
