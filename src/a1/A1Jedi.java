@@ -38,7 +38,7 @@ public class A1Jedi {
 
             int countProduct = scan.nextInt();
 
-
+            boolean[] isBought = new boolean[numberOfItem];
             for (int j = 0; j < countProduct; j++) {
                 int countUnit = scan.nextInt();
 
@@ -47,11 +47,19 @@ public class A1Jedi {
                 // update the itemCustomers array and itemSum array
                 for (int n = 0; n < numberOfItem; n++) {
                     if (name.equals(itemName[n])) {
-                        itemCustomers[n]++;
                         itemSum[n] += countUnit;
                     }
                 }
-
+                for (int n = 0; n < numberOfItem; n++) {
+                    if (name.equals(itemName[n])) {
+                        isBought[n] = true;
+                    }
+                }
+            }
+            for (int n = 0; n < numberOfItem; n++) {
+                if(isBought[n]==true){
+                    itemCustomers[n]++;
+                }
             }
         }
         // display the results
@@ -65,7 +73,5 @@ public class A1Jedi {
 
 
     }
+}
 
-
-		
-    }
